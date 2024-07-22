@@ -2,6 +2,7 @@ import { useState } from "react";
 import { countries } from "../../data/countries";
 import styles from "./Form.module.css";
 import { SearchType } from "../../interfaces/search_type.interface";
+import { toast } from "react-toastify";
 
 export const Form = () => {
   const [search, setSearch] = useState<SearchType>({ city: "", country: "" });
@@ -12,8 +13,17 @@ export const Form = () => {
       | React.ChangeEvent<HTMLSelectElement>
   ) => setSearch({ ...search, [e.target.name]: e.target.value });
 
+  const submitForm = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (Object.values(search).includes("")) {
+      toast.error("Hay campos obligatorios sin rellenar");
+      return;
+    }
+  };
+
   return (
-    <form className={styles.form}>
+    <form className={styles.form} onSubmit={submitForm}>
       <div className={styles.field}>
         <label htmlFor="city">Ciudad:</label>
         <input
