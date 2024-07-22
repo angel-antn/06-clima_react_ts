@@ -1,0 +1,23 @@
+.card {
+  background-color: var(--white);
+  border-radius: 15px;
+  padding: 1rem;
+  width: 90%;
+  max-width: 150rem;
+  margin: 0 auto;
+}
+
+.title {
+  color: var(--primary);
+  text-align: center;
+  font-family: "Playwrite BE VLG", cursive;
+  font-size: 3.5rem;
+}
+
+@media (min-width: 768px) {
+  .container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+  }
+}

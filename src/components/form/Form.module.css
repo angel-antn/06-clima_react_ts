@@ -1,0 +1,28 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+}
+
+.form input[type="text"],
+select {
+  border-radius: 15px;
+  padding: 1rem;
+  border: 0.01rem solid var(--secondary);
+}
+
+.submit {
+  border-radius: 15px;
+  padding: 1rem;
+  font-weight: 700;
+  color: var(--white);
+  background-color: var(--primary);
+  text-transform: uppercase;
+  cursor: pointer;
+  border: 0;
+}
