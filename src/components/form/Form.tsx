@@ -3,8 +3,13 @@ import { countries } from "../../data/countries";
 import styles from "./Form.module.css";
 import { SearchType } from "../../interfaces/search_type.interface";
 import { toast } from "react-toastify";
+import { WeatherResponse } from "../../schemas/weather_response.schema";
 
-export const Form = () => {
+interface FormProps {
+  fetchWeather: (search: SearchType) => Promise<WeatherResponse | undefined>;
+}
+
+export const Form = ({ fetchWeather }: FormProps) => {
   const [search, setSearch] = useState<SearchType>({ city: "", country: "" });
 
   const handleChange = (
@@ -20,6 +25,8 @@ export const Form = () => {
       toast.error("Hay campos obligatorios sin rellenar");
       return;
     }
+
+    fetchWeather(search);
   };
 
   return (
